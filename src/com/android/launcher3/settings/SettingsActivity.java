@@ -25,7 +25,7 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.app.DialogFragment;
 import android.app.Fragment;
-import android.content.ComponentName;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.pm.ApplicationInfo;
@@ -40,7 +40,6 @@ import com.android.launcher3.LauncherTab;
 import com.android.launcher3.R;
 import com.android.launcher3.Utilities;
 import com.android.launcher3.config.FeatureFlags;
-import com.android.launcher3.graphics.GridOptionsProvider;
 import com.android.launcher3.uioverrides.plugins.PluginManagerWrapper;
 import com.android.launcher3.util.SecureSettingsObserver;
 
@@ -58,8 +57,7 @@ import androidx.recyclerview.widget.RecyclerView;
  * Settings activity for Launcher. Currently implements the following setting: Allow rotation
  */
 public class SettingsActivity extends Activity
-        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback,
-        SharedPreferences.OnSharedPreferenceChangeListener{
+        implements OnPreferenceStartFragmentCallback, OnPreferenceStartScreenCallback {
 
     private static final String DEVELOPER_OPTIONS_KEY = "pref_developer_options";
     private static final String FLAGS_PREFERENCE_KEY = "flag_toggler";
@@ -92,10 +90,6 @@ public class SettingsActivity extends Activity
                     .replace(android.R.id.content, f)
                     .commit();
         }
-        Utilities.getPrefs(getApplicationContext()).registerOnSharedPreferenceChangeListener(this);
-    }
-    @Override
-    public void onSharedPreferenceChanged(SharedPreferences sharedPreferences, String key) {
     }
 
     private boolean startFragment(String fragment, Bundle args, String key) {

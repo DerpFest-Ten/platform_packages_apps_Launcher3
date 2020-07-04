@@ -8,7 +8,16 @@
   *;
 }
 
+-keep class com.android.launcher3.graphics.FixedScaleDrawable {
+  public <init>(...);
+}
+
 -keep class com.android.launcher3.graphics.ShadowDrawable {
+  public <init>(...);
+}
+
+# QSB
+-keep class com.android.launcher3.qsb.QsbContainerView$QsbFragment {
   public <init>(...);
 }
 
